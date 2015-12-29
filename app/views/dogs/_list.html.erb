@@ -1,0 +1,18 @@
+<% @dogs.in_groups_of(3, false) do |dogs_group| %>
+  <div class="row">
+    <% dogs_group.each do |dog| %>
+      <%= link_to dog, class: "fancybox" do %>
+        <div class="col-md-4">
+          <div class="box-cachorro">
+            <%= image_tag dog.photo.url, alt: "#{dog.breed.name.capitalize} #{dog.color.capitalize}"%>
+            <div class="btn-foto">Leva eu!</div>
+            <div>
+              <span class="titulo-cachorro"><%= "#{dog.breed.name} #{dog.color}" %></span>
+              <span class="detalhes-cachorro"><strong>R$ <%= sprintf('%.2f', dog.amount) %></strong><br><%= dog.age %> <%= "#{dog.age > 1 ? 'Anos' : 'Ano'}" %></span>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

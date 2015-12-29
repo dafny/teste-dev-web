@@ -1,0 +1,27 @@
+<div class="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <%= image_tag @dog.photo.url, alt: "#{@dog.breed.name.capitalize} #{@dog.color.capitalize}", class: "dog-photo"%>
+      </div>
+      <div class="col-md-4">
+        <div class="box-cachorro">
+          <span class="titulo-cachorro"><%= "#{@dog.breed.name} #{@dog.color}" %></span>
+        </div>
+        <div class="ficha-cachorro">
+          <p><strong>Raça:</strong> <%= @dog.breed.name %></p>
+          <p><strong>Cor:</strong> <%= @dog.color %></p>
+          <p><strong>Idade:</strong> <%= @dog.age %> <%= "#{@dog.age > 1 ? 'Anos' : 'Ano'}" %></p>
+          <p><strong>Sexo:</strong> <%= Dog.genders[@dog.gender] %></p>
+          <p><strong>Tamanho:</strong> <%= Dog.sizes[@dog.size] %></p>
+          <p><strong>Valor:</strong> R$ <%= sprintf('%.2f', @dog.amount) %></p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 col-md-offset-6">
+        <%= link_to "Levar!", "#", class: "btn-go-buy" %>
+      </div>
+    </div>
+  </div>
+</div>

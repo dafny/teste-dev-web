@@ -1,0 +1,23 @@
+<!--[if lt IE 7]>
+    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+<![endif]-->
+
+<div class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-2">
+              <%= link_to image_tag("logo.svg", alt: "Charlie & Dogs"), "#", title: "Charlie & Dogs" %>
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-10">
+              <%= form_tag dogs_path, method: "get", id: "dogs_search", remote: true do %>
+                <div class="input-group buscar">
+                  <%= text_field_tag :search, params[:search], class: "form-control input-lg", placeholder: "Buscar por..."%>
+                  <span class="input-group-btn">
+                    <button class="btn btn-default input-lg" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                  </span>
+                </div>
+              <% end %>
+            </div>
+        </div>
+    </div>
+</div>
