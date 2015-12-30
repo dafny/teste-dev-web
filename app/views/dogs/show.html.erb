@@ -11,16 +11,20 @@
         <div class="ficha-cachorro">
           <p><strong>Raça:</strong> <%= @dog.breed.name %></p>
           <p><strong>Cor:</strong> <%= @dog.color %></p>
-          <p><strong>Idade:</strong> <%= @dog.age %> <%= "#{@dog.age > 1 ? 'Anos' : 'Ano'}" %></p>
+          <p><strong>Idade:</strong> <%= pluralize(@dog.age, 'Ano', 'Anos') %> </p>
           <p><strong>Sexo:</strong> <%= Dog.genders[@dog.gender] %></p>
           <p><strong>Tamanho:</strong> <%= Dog.sizes[@dog.size] %></p>
-          <p><strong>Valor:</strong> R$ <%= sprintf('%.2f', @dog.amount) %></p>
+          <p><strong>Valor:</strong><%= number_to_currency(@dog.amount) %></p>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-2 col-md-offset-6">
-        <%= link_to "Levar!", "#", class: "btn-go-buy" %>
+        <% if session['purchase'].nil? %>
+          <%= link_to "Levar!", new_purchase_path(dog_id: @dog.id) , class: "btn-go-buy" %>
+        <% else %>
+          <%= link_to "Levar!", add_to_cart_purchases_dogs_path(dog_id: @dog.id) , class: "btn-go-buy" %>
+        <% end %>
       </div>
     </div>
   </div>

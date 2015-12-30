@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Dog, type: :model do
   it { expect belong_to(:breed) }
+  it { expect have_many(:purchases_dogs) }
   it { expect validate_presence_of(:breed_id) }
   it { expect validate_presence_of(:color) }
   it { expect validate_presence_of(:amount) }

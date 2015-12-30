@@ -1,0 +1,35 @@
+pt-BR:
+  activerecord:
+    models:
+      dog: Cachorro
+      breed: Raça
+      purchase: Compra
+      purchases_dog: ""
+
+    attributes:
+      dog:
+        breed_id: Raça
+        color: Cor
+        amount: Valor
+        age: Idade
+        gender: Sexo
+        size: Tamanho
+        photo: Foto
+      breed:
+        name: Nome
+      purchase:
+        name: Nome
+        registry_number: CPF
+        email: E-mail
+        address: Endereço
+        address_number: Número
+        complement: Complemento
+        city: Cidade
+        state: Estado
+        cep: CEP
+      purchases_dog:
+        purchase_id: Comprador
+        dog_id: Cachorro
+        quantity: Quantidade
+        total_amount: Valor Total
+

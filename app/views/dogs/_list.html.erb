@@ -8,7 +8,7 @@
             <div class="btn-foto">Leva eu!</div>
             <div>
               <span class="titulo-cachorro"><%= "#{dog.breed.name} #{dog.color}" %></span>
-              <span class="detalhes-cachorro"><strong>R$ <%= sprintf('%.2f', dog.amount) %></strong><br><%= dog.age %> <%= "#{dog.age > 1 ? 'Anos' : 'Ano'}" %></span>
+              <span class="detalhes-cachorro"><strong><%= number_to_currency(dog.amount) %></strong><br><%= pluralize(dog.age, "Ano", "Anos") %> </span>
             </div>
           </div>
         </div>

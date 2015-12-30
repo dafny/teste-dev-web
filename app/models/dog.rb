@@ -5,6 +5,7 @@ class Dog < ActiveRecord::Base
   validates :breed_id, :color, :amount, :age, :gender, :size, :photo, presence: true
 
   belongs_to :breed
+  has_many :purchases_dogs
 
   enum size: {
     mini: "Mini",

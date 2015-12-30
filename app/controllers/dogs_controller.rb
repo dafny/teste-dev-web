@@ -10,7 +10,7 @@ class DogsController < ApplicationController
 
   private
     def set_dog
-      @dog = Dog.find(params[:id])
+      @dog = Dog.find_by(id: params[:id])
     end
 
 end

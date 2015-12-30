@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151228223126) do
+ActiveRecord::Schema.define(version: 20151229230705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,4 +37,32 @@ ActiveRecord::Schema.define(version: 20151228223126) do
     t.string   "size"
   end
 
+  create_table "purchases", force: :cascade do |t|
+    t.string   "name"
+    t.string   "registry_number"
+    t.string   "email"
+    t.string   "address"
+    t.string   "address_number"
+    t.string   "complement"
+    t.string   "city"
+    t.string   "state"
+    t.string   "cep"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "purchases_dogs", force: :cascade do |t|
+    t.integer  "dog_id"
+    t.integer  "purchase_id"
+    t.integer  "quantity"
+    t.float    "total_amount"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "purchases_dogs", ["dog_id"], name: "index_purchases_dogs_on_dog_id", using: :btree
+  add_index "purchases_dogs", ["purchase_id"], name: "index_purchases_dogs_on_purchase_id", using: :btree
+
+  add_foreign_key "purchases_dogs", "dogs"
+  add_foreign_key "purchases_dogs", "purchases"
 end

@@ -1,0 +1,53 @@
+<div class="content">
+  <div class="container">
+    <% @purchases_dogs.cart_dogs_hash.each do |dog_id, quantity| %>
+      <div class="row">
+        <% dog = Dog.find_by(id: dog_id) %>
+        <div class="col-xs-4">
+          <%= image_tag dog.photo.url, alt: "#{dog.breed.name.capitalize} #{dog.color.capitalize}", class: "dog-photo"%>
+        </div>
+
+        <div class="col-xs-8">
+          <div class="box-cachorro">
+            <span class="titulo-cachorro"><%= "#{dog.breed.name} #{dog.color}" %></span>
+          </div>
+        </div>
+
+        <div class="col-xs-8">
+          <label class="col-sm-1 control-label"><%= Dog.human_attribute_name(:amount) %></label>
+          <div class="col-sm-7">
+            <%= label_tag :amount, number_to_currency(dog.amount) %>
+          </div>
+        </div>
+
+        <div class="col-xs-4">
+          <label class="col-sm-3 control-label"><%= PurchasesDog.human_attribute_name(:quantity) %></label>
+          <div class="col-sm-8">
+            <%= label_tag :quantity, quantity %>
+          </div>
+        </div>
+
+        <div class="col-xs-4">
+          <label class="col-sm-4 control-label"><%= PurchasesDog.human_attribute_name(:total_amount) %></label>
+          <div class="col-sm-8">
+            <%= label_tag :total_amount, number_to_currency(quantity * dog.amount) %>
+          </div>
+        </div>
+      </div>
+      <br>
+    <% end %>
+
+
+    <div class="col-xs-10 col-md-offset-1">
+      <div class="actions">
+        <div class="col-md-5">
+          <%= link_to "Continuar Comprando", dogs_path, class: "btn-go-buy", id: "buy-more" %>
+        </div>
+
+        <div class="col-md-3 col-md-offset-4">
+          <%= link_to "Finalizar!", purchases_dogs_path, method: :post, class: "btn-go-buy" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
